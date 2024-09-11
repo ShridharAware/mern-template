@@ -20,17 +20,25 @@ const createUser = async (userData) => {
 };
 
 const updateUser = async (id, updateData) => {
-  return await User.findByIdAndUpdate(
-    new mongoose.Types.ObjectId(id),
-    updateData,
-    {
-      new: true,
-    }
-  );
+  try {
+    return await User.findByIdAndUpdate(
+      new mongoose.Types.ObjectId(id),
+      updateData,
+      {
+        new: true,
+      }
+    );
+  } catch (error) {
+    throw error;
+  }
 };
 
 const deleteUser = async (id) => {
-  return await User.findByIdAndDelete(id);
+  try {
+    return await User.findByIdAndDelete(id);
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {

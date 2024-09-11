@@ -19,21 +19,33 @@ const createAdmin = async (userData) => {
 };
 
 const getUsers = async () => {
-  return await User.find();
+  try {
+    return await User.find();
+  } catch (error) {
+    throw error;
+  }
 };
 
 const updateUser = async (id, updateData) => {
-  return await User.findByIdAndUpdate(
-    new mongoose.Types.ObjectId(id),
-    updateData,
-    {
-      new: true,
-    }
-  );
+  try {
+    return await User.findByIdAndUpdate(
+      new mongoose.Types.ObjectId(id),
+      updateData,
+      {
+        new: true,
+      }
+    );
+  } catch (error) {
+    throw error;
+  }
 };
 
 const deleteUser = async (id) => {
-  return await User.findByIdAndDelete(id);
+  try {
+    return await User.findByIdAndDelete(id);
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {
